@@ -1,2 +1,1 @@
-# WhatsappCloning
-Cloning Whatsapp using Next.js
+# Weather App
