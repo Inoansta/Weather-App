@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, Text, FlatList, View, StatusBar } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, FlatList, View, StatusBar, Image, ImageBackground, ImageBackgroundBase } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather';
 
 const DATA = [
@@ -20,17 +20,17 @@ const DATA = [
 
 const Empty =()=>(
     <View>
-        <Text>Empty</Text>
+        <Text >Empty</Text>
     </View>
 )
 
 const Item = (props)=>{
     const {name, something} = props
     return (
-        <View>
+        <View style={styles.item}>
             <Icon name="sun" size={32} color="orange" />
-            <Text>{name}</Text>
-            <Text>{something}</Text>
+            <Text style={styles.temp}>{name}</Text>
+            <Text style={styles.temp}>{something}</Text>
         </View>
     )
 }
@@ -41,8 +41,9 @@ const UpcomingWeather = ()=>{
         <Item name={item.name} something={item.something}/>
     )
     return (
-        <SafeAreaView styles={styles.container}>
-            <Text>Upcoming Wetaher</Text>
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={require('../assets/upcoming-background.jpeg')} style={styles.image}>
+            <Text>Upcoming Weather</Text>
             <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -50,6 +51,7 @@ const UpcomingWeather = ()=>{
                 ItemSeparatorComponent={()=><View style={{backgroundColor:'red', height:2}}></View>}
                 ListEmptyComponent={<Empty/>}
             />
+            </ImageBackground>
         </SafeAreaView>
     )
 }
@@ -57,7 +59,25 @@ const UpcomingWeather = ()=>{
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        marginTop: StatusBar.currentHeight || 0
+        marginTop: StatusBar.currentHeight || 0,
+        backgroundColor: 'royalblue'
+    },
+    item:{
+        padding:20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        borderWidth: 5,
+        backgroundColor: 'pink'
+    },
+    temp:{
+        color: 'white',
+        fontSize: 20
+    },
+    image:{
+       flex:1
     }
 })
 
