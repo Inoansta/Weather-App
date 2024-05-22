@@ -7,7 +7,7 @@ import OurChild from "./src/components/OurChild";
 const App = ()=>{
   return (
     <View style={styles.container}>
-      {/* <CurrentWeather/> */}
+      <CurrentWeather/>
       <UpcomingWeather/>
     </View>
   )
